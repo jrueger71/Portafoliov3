@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de blogs{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2 class="text-center">Lista de blogs</h2>
+    <div class="row">
+        <div class="scroll-container col-12" style="max-height: 350px; overflow-y: auto;">
+            {% for blog in blogs %}
+            <div class="card mt-3 bg-dark text-white">
+                <div class="card-header">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ blog.content|slice:":100" }}</p>
+                    <a href="{% url 'blog_detail' blog.id %}" class="btn btn-outline-warning">Leer Completo</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Publicado el: {{ blog.date_posted }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

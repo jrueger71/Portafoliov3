@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Proyectos{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2>Lista de Proyectos</h2>
+    <div class="grid-container">
+        {% for proyecto in proyectos %}
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">{{ proyecto.title }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ proyecto.content|slice:":100" }}</p>
+                <a href="{% url 'proyecto_detail' proyecto.id %}" class="btn btn-outline-warning">Leer Completo</a>
+            </div>
+            <div class="card-footer text-muted">
+                Publicado el: {{ proyecto.date_posted }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

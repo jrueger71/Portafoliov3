@@ -1,0 +1,32 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'expense_create' %}">Expense Create</a></li>
+        {% else %}
+
+        {% endif %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'expense_list' %}">Expense List</a></li>
+        {% else %}
+
+        {% endif %}
+    </ul>
+    <ul class="nav justify-content-end">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" style="color: white;">
+                    <button type="button" class="btn btn-outline-light">Logout</button>
+                </a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" style="color: white;">
+                    <button type="button" class="btn btn-outline-light">Login</button>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
